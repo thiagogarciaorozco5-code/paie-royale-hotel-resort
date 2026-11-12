@@ -10,33 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AyudaRouteImport } from './routes/ayuda'
+import { Route as FavoritosRouteImport } from './routes/favoritos'
+import { Route as PromocionesRouteImport } from './routes/promociones'
+import { Route as HabitacionesIndexRouteImport } from './routes/habitaciones.index'
+import { Route as HabitacionesRoomIdRouteImport } from './routes/habitaciones.$roomId'
+import { Route as PaquetesIndexRouteImport } from './routes/paquetes.index'
+import { Route as PaquetesPackageIdRouteImport } from './routes/paquetes.$packageId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AyudaRoute = AyudaRouteImport.update({
+  id: '/ayuda',
+  path: '/ayuda',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FavoritosRoute = FavoritosRouteImport.update({
+  id: '/favoritos',
+  path: '/favoritos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PromocionesRoute = PromocionesRouteImport.update({
+  id: '/promociones',
+  path: '/promociones',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HabitacionesIndexRoute = HabitacionesIndexRouteImport.update({
+  id: '/habitaciones/',
+  path: '/habitaciones/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HabitacionesRoomIdRoute = HabitacionesRoomIdRouteImport.update({
+  id: '/habitaciones/$roomId',
+  path: '/habitaciones/$roomId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaquetesIndexRoute = PaquetesIndexRouteImport.update({
+  id: '/paquetes/',
+  path: '/paquetes/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaquetesPackageIdRoute = PaquetesPackageIdRouteImport.update({
+  id: '/paquetes/$packageId',
+  path: '/paquetes/$packageId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ayuda': typeof AyudaRoute
+  '/favoritos': typeof FavoritosRoute
+  '/promociones': typeof PromocionesRoute
+  '/habitaciones/$roomId': typeof HabitacionesRoomIdRoute
+  '/paquetes/$packageId': typeof PaquetesPackageIdRoute
+  '/habitaciones/': typeof HabitacionesIndexRoute
+  '/paquetes/': typeof PaquetesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ayuda': typeof AyudaRoute
+  '/favoritos': typeof FavoritosRoute
+  '/promociones': typeof PromocionesRoute
+  '/habitaciones/$roomId': typeof HabitacionesRoomIdRoute
+  '/paquetes/$packageId': typeof PaquetesPackageIdRoute
+  '/habitaciones': typeof HabitacionesIndexRoute
+  '/paquetes': typeof PaquetesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ayuda': typeof AyudaRoute
+  '/favoritos': typeof FavoritosRoute
+  '/promociones': typeof PromocionesRoute
+  '/habitaciones/$roomId': typeof HabitacionesRoomIdRoute
+  '/paquetes/$packageId': typeof PaquetesPackageIdRoute
+  '/habitaciones/': typeof HabitacionesIndexRoute
+  '/paquetes/': typeof PaquetesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/ayuda'
+    | '/favoritos'
+    | '/promociones'
+    | '/habitaciones/$roomId'
+    | '/paquetes/$packageId'
+    | '/habitaciones/'
+    | '/paquetes/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/ayuda'
+    | '/favoritos'
+    | '/promociones'
+    | '/habitaciones/$roomId'
+    | '/paquetes/$packageId'
+    | '/habitaciones'
+    | '/paquetes'
+  id:
+    | '__root__'
+    | '/'
+    | '/ayuda'
+    | '/favoritos'
+    | '/promociones'
+    | '/habitaciones/$roomId'
+    | '/paquetes/$packageId'
+    | '/habitaciones/'
+    | '/paquetes/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AyudaRoute: typeof AyudaRoute
+  FavoritosRoute: typeof FavoritosRoute
+  PromocionesRoute: typeof PromocionesRoute
+  HabitacionesRoomIdRoute: typeof HabitacionesRoomIdRoute
+  PaquetesPackageIdRoute: typeof PaquetesPackageIdRoute
+  HabitacionesIndexRoute: typeof HabitacionesIndexRoute
+  PaquetesIndexRoute: typeof PaquetesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +143,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ayuda': {
+      id: '/ayuda'
+      path: '/ayuda'
+      fullPath: '/ayuda'
+      preLoaderRoute: typeof AyudaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/favoritos': {
+      id: '/favoritos'
+      path: '/favoritos'
+      fullPath: '/favoritos'
+      preLoaderRoute: typeof FavoritosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/promociones': {
+      id: '/promociones'
+      path: '/promociones'
+      fullPath: '/promociones'
+      preLoaderRoute: typeof PromocionesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/habitaciones/': {
+      id: '/habitaciones/'
+      path: '/habitaciones'
+      fullPath: '/habitaciones/'
+      preLoaderRoute: typeof HabitacionesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/habitaciones/$roomId': {
+      id: '/habitaciones/$roomId'
+      path: '/habitaciones/$roomId'
+      fullPath: '/habitaciones/$roomId'
+      preLoaderRoute: typeof HabitacionesRoomIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/paquetes/': {
+      id: '/paquetes/'
+      path: '/paquetes'
+      fullPath: '/paquetes/'
+      preLoaderRoute: typeof PaquetesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/paquetes/$packageId': {
+      id: '/paquetes/$packageId'
+      path: '/paquetes/$packageId'
+      fullPath: '/paquetes/$packageId'
+      preLoaderRoute: typeof PaquetesPackageIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AyudaRoute: AyudaRoute,
+  FavoritosRoute: FavoritosRoute,
+  PromocionesRoute: PromocionesRoute,
+  HabitacionesRoomIdRoute: HabitacionesRoomIdRoute,
+  PaquetesPackageIdRoute: PaquetesPackageIdRoute,
+  HabitacionesIndexRoute: HabitacionesIndexRoute,
+  PaquetesIndexRoute: PaquetesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
