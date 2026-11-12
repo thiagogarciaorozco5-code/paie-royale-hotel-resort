@@ -10,17 +10,35 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AyudaRouteImport } from './routes/ayuda'
 import { Route as FavoritosRouteImport } from './routes/favoritos'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as PerfilRouteImport } from './routes/perfil'
 import { Route as PromocionesRouteImport } from './routes/promociones'
+import { Route as RegistroRouteImport } from './routes/registro'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminHabitacionesRouteImport } from './routes/admin.habitaciones'
+import { Route as AdminPaquetesRouteImport } from './routes/admin.paquetes'
+import { Route as AdminPromocionesRouteImport } from './routes/admin.promociones'
+import { Route as AdminReservasRouteImport } from './routes/admin.reservas'
+import { Route as AdminServiciosRouteImport } from './routes/admin.servicios'
+import { Route as AdminUsuariosRouteImport } from './routes/admin.usuarios'
 import { Route as HabitacionesIndexRouteImport } from './routes/habitaciones.index'
 import { Route as HabitacionesRoomIdRouteImport } from './routes/habitaciones.$roomId'
 import { Route as PaquetesIndexRouteImport } from './routes/paquetes.index'
 import { Route as PaquetesPackageIdRouteImport } from './routes/paquetes.$packageId'
+import { Route as ReservasIndexRouteImport } from './routes/reservas.index'
+import { Route as ReservasCodeRouteImport } from './routes/reservas.$code'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AyudaRoute = AyudaRouteImport.update({
@@ -33,10 +51,60 @@ const FavoritosRoute = FavoritosRouteImport.update({
   path: '/favoritos',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PerfilRoute = PerfilRouteImport.update({
+  id: '/perfil',
+  path: '/perfil',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PromocionesRoute = PromocionesRouteImport.update({
   id: '/promociones',
   path: '/promociones',
   getParentRoute: () => rootRouteImport,
+} as any)
+const RegistroRoute = RegistroRouteImport.update({
+  id: '/registro',
+  path: '/registro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminHabitacionesRoute = AdminHabitacionesRouteImport.update({
+  id: '/habitaciones',
+  path: '/habitaciones',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPaquetesRoute = AdminPaquetesRouteImport.update({
+  id: '/paquetes',
+  path: '/paquetes',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPromocionesRoute = AdminPromocionesRouteImport.update({
+  id: '/promociones',
+  path: '/promociones',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminReservasRoute = AdminReservasRouteImport.update({
+  id: '/reservas',
+  path: '/reservas',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminServiciosRoute = AdminServiciosRouteImport.update({
+  id: '/servicios',
+  path: '/servicios',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminUsuariosRoute = AdminUsuariosRouteImport.update({
+  id: '/usuarios',
+  path: '/usuarios',
+  getParentRoute: () => AdminRoute,
 } as any)
 const HabitacionesIndexRoute = HabitacionesIndexRouteImport.update({
   id: '/habitaciones/',
@@ -58,80 +126,172 @@ const PaquetesPackageIdRoute = PaquetesPackageIdRouteImport.update({
   path: '/paquetes/$packageId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReservasIndexRoute = ReservasIndexRouteImport.update({
+  id: '/reservas/',
+  path: '/reservas/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReservasCodeRoute = ReservasCodeRouteImport.update({
+  id: '/reservas/$code',
+  path: '/reservas/$code',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
   '/ayuda': typeof AyudaRoute
   '/favoritos': typeof FavoritosRoute
+  '/login': typeof LoginRoute
+  '/perfil': typeof PerfilRoute
   '/promociones': typeof PromocionesRoute
+  '/registro': typeof RegistroRoute
+  '/admin/habitaciones': typeof AdminHabitacionesRoute
+  '/admin/paquetes': typeof AdminPaquetesRoute
+  '/admin/promociones': typeof AdminPromocionesRoute
+  '/admin/reservas': typeof AdminReservasRoute
+  '/admin/servicios': typeof AdminServiciosRoute
+  '/admin/usuarios': typeof AdminUsuariosRoute
   '/habitaciones/$roomId': typeof HabitacionesRoomIdRoute
   '/paquetes/$packageId': typeof PaquetesPackageIdRoute
+  '/reservas/$code': typeof ReservasCodeRoute
+  '/admin/': typeof AdminIndexRoute
   '/habitaciones/': typeof HabitacionesIndexRoute
   '/paquetes/': typeof PaquetesIndexRoute
+  '/reservas/': typeof ReservasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/ayuda': typeof AyudaRoute
   '/favoritos': typeof FavoritosRoute
+  '/login': typeof LoginRoute
+  '/perfil': typeof PerfilRoute
   '/promociones': typeof PromocionesRoute
+  '/registro': typeof RegistroRoute
+  '/admin/habitaciones': typeof AdminHabitacionesRoute
+  '/admin/paquetes': typeof AdminPaquetesRoute
+  '/admin/promociones': typeof AdminPromocionesRoute
+  '/admin/reservas': typeof AdminReservasRoute
+  '/admin/servicios': typeof AdminServiciosRoute
+  '/admin/usuarios': typeof AdminUsuariosRoute
   '/habitaciones/$roomId': typeof HabitacionesRoomIdRoute
   '/paquetes/$packageId': typeof PaquetesPackageIdRoute
+  '/reservas/$code': typeof ReservasCodeRoute
+  '/admin': typeof AdminIndexRoute
   '/habitaciones': typeof HabitacionesIndexRoute
   '/paquetes': typeof PaquetesIndexRoute
+  '/reservas': typeof ReservasIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
   '/ayuda': typeof AyudaRoute
   '/favoritos': typeof FavoritosRoute
+  '/login': typeof LoginRoute
+  '/perfil': typeof PerfilRoute
   '/promociones': typeof PromocionesRoute
+  '/registro': typeof RegistroRoute
+  '/admin/habitaciones': typeof AdminHabitacionesRoute
+  '/admin/paquetes': typeof AdminPaquetesRoute
+  '/admin/promociones': typeof AdminPromocionesRoute
+  '/admin/reservas': typeof AdminReservasRoute
+  '/admin/servicios': typeof AdminServiciosRoute
+  '/admin/usuarios': typeof AdminUsuariosRoute
   '/habitaciones/$roomId': typeof HabitacionesRoomIdRoute
   '/paquetes/$packageId': typeof PaquetesPackageIdRoute
+  '/reservas/$code': typeof ReservasCodeRoute
+  '/admin/': typeof AdminIndexRoute
   '/habitaciones/': typeof HabitacionesIndexRoute
   '/paquetes/': typeof PaquetesIndexRoute
+  '/reservas/': typeof ReservasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
     | '/ayuda'
     | '/favoritos'
+    | '/login'
+    | '/perfil'
     | '/promociones'
+    | '/registro'
+    | '/admin/habitaciones'
+    | '/admin/paquetes'
+    | '/admin/promociones'
+    | '/admin/reservas'
+    | '/admin/servicios'
+    | '/admin/usuarios'
     | '/habitaciones/$roomId'
     | '/paquetes/$packageId'
+    | '/reservas/$code'
+    | '/admin/'
     | '/habitaciones/'
     | '/paquetes/'
+    | '/reservas/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/ayuda'
     | '/favoritos'
+    | '/login'
+    | '/perfil'
     | '/promociones'
+    | '/registro'
+    | '/admin/habitaciones'
+    | '/admin/paquetes'
+    | '/admin/promociones'
+    | '/admin/reservas'
+    | '/admin/servicios'
+    | '/admin/usuarios'
     | '/habitaciones/$roomId'
     | '/paquetes/$packageId'
+    | '/reservas/$code'
+    | '/admin'
     | '/habitaciones'
     | '/paquetes'
+    | '/reservas'
   id:
     | '__root__'
     | '/'
+    | '/admin'
     | '/ayuda'
     | '/favoritos'
+    | '/login'
+    | '/perfil'
     | '/promociones'
+    | '/registro'
+    | '/admin/habitaciones'
+    | '/admin/paquetes'
+    | '/admin/promociones'
+    | '/admin/reservas'
+    | '/admin/servicios'
+    | '/admin/usuarios'
     | '/habitaciones/$roomId'
     | '/paquetes/$packageId'
+    | '/reservas/$code'
+    | '/admin/'
     | '/habitaciones/'
     | '/paquetes/'
+    | '/reservas/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRouteWithChildren
   AyudaRoute: typeof AyudaRoute
   FavoritosRoute: typeof FavoritosRoute
+  LoginRoute: typeof LoginRoute
+  PerfilRoute: typeof PerfilRoute
   PromocionesRoute: typeof PromocionesRoute
+  RegistroRoute: typeof RegistroRoute
   HabitacionesRoomIdRoute: typeof HabitacionesRoomIdRoute
   PaquetesPackageIdRoute: typeof PaquetesPackageIdRoute
+  ReservasCodeRoute: typeof ReservasCodeRoute
   HabitacionesIndexRoute: typeof HabitacionesIndexRoute
   PaquetesIndexRoute: typeof PaquetesIndexRoute
+  ReservasIndexRoute: typeof ReservasIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -141,6 +301,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ayuda': {
@@ -157,12 +324,82 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FavoritosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/perfil': {
+      id: '/perfil'
+      path: '/perfil'
+      fullPath: '/perfil'
+      preLoaderRoute: typeof PerfilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/promociones': {
       id: '/promociones'
       path: '/promociones'
       fullPath: '/promociones'
       preLoaderRoute: typeof PromocionesRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/registro': {
+      id: '/registro'
+      path: '/registro'
+      fullPath: '/registro'
+      preLoaderRoute: typeof RegistroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/habitaciones': {
+      id: '/admin/habitaciones'
+      path: '/habitaciones'
+      fullPath: '/admin/habitaciones'
+      preLoaderRoute: typeof AdminHabitacionesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/paquetes': {
+      id: '/admin/paquetes'
+      path: '/paquetes'
+      fullPath: '/admin/paquetes'
+      preLoaderRoute: typeof AdminPaquetesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/promociones': {
+      id: '/admin/promociones'
+      path: '/promociones'
+      fullPath: '/admin/promociones'
+      preLoaderRoute: typeof AdminPromocionesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/reservas': {
+      id: '/admin/reservas'
+      path: '/reservas'
+      fullPath: '/admin/reservas'
+      preLoaderRoute: typeof AdminReservasRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/servicios': {
+      id: '/admin/servicios'
+      path: '/servicios'
+      fullPath: '/admin/servicios'
+      preLoaderRoute: typeof AdminServiciosRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/usuarios': {
+      id: '/admin/usuarios'
+      path: '/usuarios'
+      fullPath: '/admin/usuarios'
+      preLoaderRoute: typeof AdminUsuariosRouteImport
+      parentRoute: typeof AdminRoute
     }
     '/habitaciones/': {
       id: '/habitaciones/'
@@ -192,18 +429,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PaquetesPackageIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reservas/': {
+      id: '/reservas/'
+      path: '/reservas'
+      fullPath: '/reservas/'
+      preLoaderRoute: typeof ReservasIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reservas/$code': {
+      id: '/reservas/$code'
+      path: '/reservas/$code'
+      fullPath: '/reservas/$code'
+      preLoaderRoute: typeof ReservasCodeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface AdminRouteChildren {
+  AdminHabitacionesRoute: typeof AdminHabitacionesRoute
+  AdminPaquetesRoute: typeof AdminPaquetesRoute
+  AdminPromocionesRoute: typeof AdminPromocionesRoute
+  AdminReservasRoute: typeof AdminReservasRoute
+  AdminServiciosRoute: typeof AdminServiciosRoute
+  AdminUsuariosRoute: typeof AdminUsuariosRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminHabitacionesRoute: AdminHabitacionesRoute,
+  AdminPaquetesRoute: AdminPaquetesRoute,
+  AdminPromocionesRoute: AdminPromocionesRoute,
+  AdminReservasRoute: AdminReservasRoute,
+  AdminServiciosRoute: AdminServiciosRoute,
+  AdminUsuariosRoute: AdminUsuariosRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRouteWithChildren,
   AyudaRoute: AyudaRoute,
   FavoritosRoute: FavoritosRoute,
+  LoginRoute: LoginRoute,
+  PerfilRoute: PerfilRoute,
   PromocionesRoute: PromocionesRoute,
+  RegistroRoute: RegistroRoute,
   HabitacionesRoomIdRoute: HabitacionesRoomIdRoute,
   PaquetesPackageIdRoute: PaquetesPackageIdRoute,
+  ReservasCodeRoute: ReservasCodeRoute,
   HabitacionesIndexRoute: HabitacionesIndexRoute,
   PaquetesIndexRoute: PaquetesIndexRoute,
+  ReservasIndexRoute: ReservasIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

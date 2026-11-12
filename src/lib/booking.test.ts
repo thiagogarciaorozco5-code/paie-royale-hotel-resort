@@ -111,3 +111,15 @@ describe("registro y pagos", () => {
     expect(luhnValid("4242 4242 4242 4241")).toBe(false);
   });
 });
+
+describe("campañas de promociones", () => {
+  it("solo incluye usuarios activos que aceptaron recibir correos", async () => {
+    const { campaignRecipients } = await import("./campaigns");
+    const users = [
+      { id: "a", email: "a@x.co", active: true, promoOptIn: true },
+      { id: "b", email: "b@x.co", active: true, promoOptIn: false },
+      { id: "c", email: "c@x.co", active: false, promoOptIn: true },
+    ];
+    expect(campaignRecipients(users).map((u) => u.id)).toEqual(["a"]);
+  });
+});
