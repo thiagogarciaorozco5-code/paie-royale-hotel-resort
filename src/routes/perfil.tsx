@@ -34,7 +34,10 @@ function ProfilePage() {
         className="mt-8 space-y-5 rounded-2xl border bg-card p-6 shadow-soft"
         onSubmit={(e) => {
           e.preventDefault();
-          if (name.trim().length < 3) return toast.error("Escribe tu nombre completo.");
+          if (name.trim().length < 3) {
+            toast.error("Escribe tu nombre completo.");
+            return;
+          }
           updateProfile(user.id, { name: name.trim(), phone: phone.trim() || undefined });
           toast.success("Perfil actualizado");
         }}

@@ -56,8 +56,14 @@ export function ImageUpload({ images, onChange, multiple = true }: { images: str
   const onFiles = (files: FileList | null) => {
     if (!files?.length) return;
     Array.from(files).forEach((file) => {
-      if (!file.type.startsWith("image/")) return toast.error("Solo se permiten imágenes.");
-      if (file.size > MAX_BYTES) return toast.error("La imagen supera 1,5 MB.");
+      if (!file.type.startsWith("image/")) {
+        toast.error("Solo se permiten imágenes.");
+        return;
+      }
+      if (file.size > MAX_BYTES) {
+        toast.error("La imagen supera 1,5 MB.");
+        return;
+      }
       const reader = new FileReader();
       reader.onload = () => onChange(multiple ? [...images, String(reader.result)] : [String(reader.result)]);
       reader.readAsDataURL(file);
